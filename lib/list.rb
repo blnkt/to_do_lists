@@ -4,6 +4,9 @@ class List
     @tasks = []
     @completed_tasks = []
   end
+  def title
+    @list_title
+  end
   def tasks
     @tasks
   end

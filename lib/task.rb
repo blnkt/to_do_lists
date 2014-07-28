@@ -17,4 +17,7 @@ class Task
   def priority
     @priority
   end
+  def edit_task(new_description)
+    @description = new_description
+  end
 end

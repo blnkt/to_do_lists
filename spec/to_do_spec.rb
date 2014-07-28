@@ -22,9 +22,15 @@ describe Task do
   end
 
   it "edits the task description" do
-    new_task = Task.new("Wash the car")
-    new_task.edit_task("Wash the bike")
-    expect(new_task.description).to eq "Wash the bike"
+    new_list = List.new("Test List")
+    newest_task = Task.new("Wash the car")
+    new_task = Task.new("Item One")
+    other_task = Task.new("Item Two")
+    new_list.add_task(new_task)
+    new_list.add_task(other_task)
+    new_list.add_task(newest_task)
+    newest_task.edit_task("Wash the bike")
+    expect(new_list.tasks[2].description).to eq "Wash the bike"
   end
 end
 
@@ -98,7 +104,6 @@ describe List do
     school.add_task(term_paper)
     school.add_task(poetry)
     school.sort_by_priority
-    p school.tasks
     expect(school.tasks[0].description).to eq "term paper"
     expect(school.tasks[1].description).to eq "problem set"
     expect(school.tasks[2].description).to eq "poetry assignment"
