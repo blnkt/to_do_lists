@@ -9,3 +9,9 @@ describe Task do
   end
 end
 
+describe List do
+  it "initializes a new list with a title to add new tasks to" do
+    new_list = List.new("List Title")
+    expect(new_list).to be_an_instance_of List
+  end
+end
