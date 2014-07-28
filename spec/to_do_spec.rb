@@ -45,4 +45,38 @@ describe List do
     expect(new_list.tasks.length).to eq 1
     expect(new_list.completed_tasks.length).to eq 1
   end
+
+  it "sorts tasks in a list by due date" do
+    new_list = List.new("Dog Walking")
+    clarence = Task.new("Walk Clarence")
+    clarence.add_date("8/6")
+    nacho = Task.new("Walk Nacho")
+    nacho.add_date("8/30")
+    rover = Task.new("Walk Rover")
+    rover.add_date("8/2")
+    new_list.add_task(clarence)
+    new_list.add_task(nacho)
+    new_list.add_task(rover)
+    new_list.sort_by_date
+    expect(new_list.tasks[0].description).to eq "Walk Rover"
+    expect(new_list.tasks[1].description).to eq "Walk Clarence"
+    expect(new_list.tasks[2].description).to eq "Walk Nacho"
+  end
+
+  it "sorts tasks in a list by due date" do
+    new_list = List.new("Dog Walking")
+    clarence = Task.new("Walk Clarence")
+    clarence.add_date("7/6")
+    nacho = Task.new("Walk Nacho")
+    nacho.add_date("11/2")
+    rover = Task.new("Walk Rover")
+    rover.add_date("1/12")
+    new_list.add_task(clarence)
+    new_list.add_task(nacho)
+    new_list.add_task(rover)
+    new_list.sort_by_date
+    expect(new_list.tasks[0].description).to eq "Walk Rover"
+    expect(new_list.tasks[1].description).to eq "Walk Clarence"
+    expect(new_list.tasks[2].description).to eq "Walk Nacho"
+  end
 end

@@ -4,6 +4,12 @@ class List
     @tasks = []
     @completed_tasks = []
   end
+  def tasks
+    @tasks
+  end
+  def completed_tasks
+    @completed_tasks
+  end
   def add_task(task)
     @tasks << task
   end
@@ -11,10 +17,10 @@ class List
     @tasks.delete(task)
     @completed_tasks << task
   end
-  def tasks
-    @tasks
-  end
-  def completed_tasks
-    @completed_tasks
+  def sort_by_date
+    @tasks.sort_by! do |task|
+      month,day = task.date.split("/")
+      [month.to_i,day.to_i]
+    end
   end
 end
