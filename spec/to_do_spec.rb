@@ -14,4 +14,11 @@ describe List do
     new_list = List.new("List Title")
     expect(new_list).to be_an_instance_of List
   end
+
+  it "adds a task to a list" do
+    new_list = List.new("Test List")
+    new_task = Task.new("Item One")
+    new_list.add_task(new_task)
+    expect(new_list.tasks[0].description).to eq "Item One"
+  end
 end
