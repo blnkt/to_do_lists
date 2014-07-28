@@ -20,6 +20,12 @@ describe Task do
     new_task.add_priority("4")
     expect(new_task.priority).to eq "4"
   end
+
+  it "edits the task description" do
+    new_task = Task.new("Wash the car")
+    new_task.edit_task("Wash the bike")
+    expect(new_task.description).to eq "Wash the bike"
+  end
 end
 
 describe List do
@@ -78,5 +84,23 @@ describe List do
     expect(new_list.tasks[0].description).to eq "Walk Rover"
     expect(new_list.tasks[1].description).to eq "Walk Clarence"
     expect(new_list.tasks[2].description).to eq "Walk Nacho"
+  end
+
+  it"sorts tasks in a list by priority" do
+    school = List.new("homework")
+    problem_set = Task.new("problem set")
+    problem_set.add_priority("3")
+    term_paper = Task.new("term paper")
+    term_paper.add_priority("5")
+    poetry = Task.new("poetry assignment")
+    poetry.add_priority("1")
+    school.add_task(problem_set)
+    school.add_task(term_paper)
+    school.add_task(poetry)
+    school.sort_by_priority
+    p school.tasks
+    expect(school.tasks[0].description).to eq "term paper"
+    expect(school.tasks[1].description).to eq "problem set"
+    expect(school.tasks[2].description).to eq "poetry assignment"
   end
 end

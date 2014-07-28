@@ -23,4 +23,10 @@ class List
       [month.to_i,day.to_i]
     end
   end
+  def sort_by_priority
+    @tasks.sort_by! do |task|
+      task.priority
+    end
+    @tasks.reverse!
+  end
 end
